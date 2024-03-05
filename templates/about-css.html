@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Maura Friddle</title>
-    <link rel="stylesheet" type="text/css" href={{ url_for('static',filename = 'style.css')}}>
+    <link href = "/static/css/style.css" rel = "stylesheet">
 </head>
 <body>
-    <h1 class="purple">Maura Friddle</h1>
+    <h1>Maura Friddle</h1>
     <!-- Adding a redirect in case the user needs to visit the home "hello" page -->
     <p>Redirect to <a href="http://127.0.0.1:5000/hello" target ="_blank">Maura Friddle's first HTML page</a>.</p>
 
     <h2>Elementary School</h2>
-    <p>I attended <strong><em>Saint Patrick's School</em></strong> in Rockville, Maryland from Kindergarten to 8th grade.</p>
+    <p>I attended <strong>Saint Patrick's School</strong> in Rockville, Maryland from Kindergarten to 8th grade.</p>
 
     <h2>High School</h2>
-    <p>I attended <strong><em>Oakcrest School</em></strong> in Vienna, Virginia from 9th grade to 12th grade. I graduated with 40 girls.</p>
+    <p>I attended <strong>Oakcrest School</strong> in Vienna, Virginia from 9th grade to 12th grade. I graduated with 40 girls.</p>
 
     <h2>College</h2>
-    <p>I attended one semester at the <strong><em>University of Dallas</em></strong> in Irving, Texas.</p>
+    <p id="special-purple">I attended one semester at the <strong>University of Dallas</strong> in Irving, Texas.</p>
     <p>I took a gap year from January 2020 - December 2020 in Wollongong, Australia.</p>
 
-    <img src="https://terpconnect.umd.edu/~jbono/bmgt407/images/smith-logo.png"
-         width="267" height="72" alt="Smith Logo">
-    <p>I will graduate in May from the <strong><em>University of Maryland Smith School of Business</em></strong> in College Park, Maryland.</p>
+    <img class="logo" src="https://terpconnect.umd.edu/~jbono/bmgt407/images/smith-logo.png"
+          alt="Smith Logo">
+    <p>I will graduate in May from the <strong>University of Maryland Smith School of Business</strong> in College Park, Maryland.</p>
     <!--Course list so that people can glean my interests-->
     <p>My favorite courses at UMD:</p>
-    <ol>
+    <ol class = bold>
         <li>ENGL375: J.R.R. Tolkien: Middle Earth and Beyond</li>
         <li>ENGL391: Tolkien in Oxford</li>
     </ol>
