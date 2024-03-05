@@ -1,0 +1,10 @@
+p.purple {
+    color: mediumpurple;
+}
+
+p.table-border {
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-collapse: collapse
+}
