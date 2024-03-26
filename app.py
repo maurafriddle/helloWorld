@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -17,6 +17,17 @@ def hello():  # put application's code here
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/favorite-course')
+def favorite_course():
+    print('Favorite course subject entered: ' + request.args.get('course_subject'))
+    print('Favorite course number entered: ' + request.args.get('course_number'))
+
+    return render_template('favorite-course.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run()
