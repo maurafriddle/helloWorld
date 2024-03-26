@@ -11,18 +11,18 @@ def about_css():  # put application's code here
     return render_template('about-css.html')
 
 @app.route('/hello')
-def hello():  # put application's code here
+def hello():
     return render_template('hello.html')
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+
 @app.route('/favorite-course')
 def favorite_course():
     print('Favorite course subject entered: ' + request.args.get('course_subject'))
     print('Favorite course number entered: ' + request.args.get('course_number'))
-
     return render_template('favorite-course.html')
 
 @app.route('/contact')

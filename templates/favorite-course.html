@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Favorite Course</title>
 </head>
-
-
 <body>
+    <h2> You entered your favorite course as:</h2>
 
+    <p> {{ request.args.get('course_subject')  }} </p>
+    <p> {{ request.args.get('course_number') }} </p>
 </body>
 </html>
