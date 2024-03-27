@@ -5,9 +5,12 @@
     <title>Favorite Course</title>
 </head>
 <body>
-    <h2> You entered your favorite course as:</h2>
+{% extends "base.html" %}
+    <h2> {% block page_head %}You entered your favorite course as:{% endblock %}</h2>
 
+    {% block page_content %}
     <p> {{ request.args.get('course_subject')  }} </p>
     <p> {{ request.args.get('course_number') }} </p>
+    {% endblock %}
 </body>
 </html>
