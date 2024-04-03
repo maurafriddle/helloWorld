@@ -8,15 +8,17 @@ class Student(db.Model):
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     major_id = db.Column(db.Integer, db.ForeignKey('major.major_id'))
+    email = db.Column(db.VARCHAR(100), unique=True, nullable=False)
     birth_date = db.Column(db.DateTime, nullable=False)
     num_credits_completed = db.Column(db.Integer, nullable=False)
     gpa = db.Column(db.Float, nullable=False)
     is_honors = db.Column(db.Boolean, nullable=False)
 
-    def __init__(self, first_name, last_name, major_id, birth_date, is_honors):
+    def __init__(self, first_name, last_name, major_id, email, birth_date, is_honors):
         self.first_name = first_name
         self.last_name = last_name
         self.major_id = major_id
+        self.email = email
         self.birth_date = birth_date
         self.num_credits_completed = 0
         self.gpa = 0.0

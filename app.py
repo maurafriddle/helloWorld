@@ -1,33 +1,3 @@
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
-
-@app.route('/about-css')
-def about_css():  # put application's code here
-    return render_template('about-css.html')
-
-@app.route('/hello')
-def hello():
-    return render_template('hello.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-@app.route('/favorite-course')
-def favorite_course():
-    print('Favorite course subject entered: ' + request.args.get('course_subject'))
-    print('Favorite course number entered: ' + request.args.get('course_number'))
-    return render_template('favorite-course.html')
-
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-    if request.method == 'POST':
-        return render_template('contact.html', form_submitted=True)
-    else:
-        return render_template('contact.html')
-
 import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from models import db, Student, Major
@@ -77,11 +47,11 @@ def student_create():
         first_name = request.form['first_name']
         last_name = request.form['last_name']
         major_id = request.form['major_id']
-
+        email = request.form['email']
         birth_date = request.form['birth_date']
         is_honors = True if 'is_honors' in request.form else False
 
-        student = Student(first_name=first_name, last_name=last_name, major_id=major_id,
+        student = Student(first_name=first_name, last_name=last_name, major_id=major_id, email=email,
                           birth_date=dt.strptime(birth_date, '%Y-%m-%d'), is_honors=is_honors)
         db.session.add(student)
         db.session.commit()
@@ -113,6 +83,7 @@ def student_edit(student_id):
             student.first_name = request.form['first_name']
             student.last_name = request.form['last_name']
             student.major_id = request.form['major_id']
+            student.email = request.form['email']
             student.birthdate = dt.strptime(request.form['birth_date'], '%Y-%m-%d')
             student.num_credits_completed = request.form['num_credits_completed']
             student.gpa = request.form['gpa']
