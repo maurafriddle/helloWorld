@@ -21,10 +21,11 @@
     {% endif %}
 {% endblock %}
 
+<!-- table for Student information with input boxes for attributes -->
 {% block page_content %}
-
 <form class="row g-3"
       action="{{ url_for('student_edit', student_id=student['student_id']) if student else url_for('student_create') }}" method="post">
+  <!--First name -->
   <div class="col-md-4">
     <label for="first_name" class="form-label"><strong>First Name</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -33,6 +34,8 @@
         <br>{{ student['first_name'] }}
     {% endif %}
   </div>
+
+    <!--Last name -->
   <div class="col-md-4">
     <label for="last_name" class="form-label"><strong>Last Name</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -41,6 +44,8 @@
         <br>{{ student['last_name'] }}
     {% endif %}
   </div>
+
+<!--Birth date -->
   <div class="col-md-4">
     <label for="birth_date" class="form-label"><strong>Birth Date</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -50,6 +55,7 @@
     {% endif %}
   </div>
 
+    <!--Email -->
   <div class = "col-md-4">
       <label for="email" class="form-label"><strong>Email</strong></label>
         {% if action and action in ['create', 'update'] %}
@@ -59,6 +65,7 @@
     {% endif %}
   </div>
 
+<!--Major -->
   <div class="col-md-4">
     <label for="major_id" class="form-label"><strong>Major</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -77,8 +84,10 @@
     {% endif %}
   </div>
 
+<!--Extra fields for when updating student information -->
 
   {% if action and action in ['read', 'update'] %}
+      <!--Number of credits completed -->
   <div class="col-md-4">
     <label for="num_credits_completed" class="form-label"><strong>Number of Credits Completed</strong></label>
     {% if action and action == 'update' %}
@@ -88,6 +97,7 @@
         <br> {{ student['num_credits_completed'] }}
     {% endif %}
   </div>
+      <!--GPA -->
   <div class="col-md-4">
     <label for="gpa" class="form-label"><strong>GPA</strong></label>
     {% if action and action in ['create', 'update'] %}
@@ -98,6 +108,7 @@
   </div>
   {% endif %}
 
+<!--Check box for whether student is honors or not -->
   <div class="col-12">
         {% if action and action in ['create', 'update'] %}
     <div class="form-check">
@@ -112,9 +123,9 @@
             {% endif %}
       </label>
   </div>
-
-
   </div>
+
+<!--Submit buttons -->
   <div class="col-12 text-center">
     {% if action and action in ['create', 'update'] %}
     <button class="btn btn-primary" type="submit">{{ 'Add' if action=='create' else 'Update' }} Student</button>

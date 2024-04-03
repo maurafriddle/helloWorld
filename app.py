@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'beyond_course_scope'
 db.init_app(app)
 
-
+# View all student observations and name, email, major, and honors attributes
 @app.route('/student/view')
 def student_view_all():
     students = Student.query.outerjoin(Major, Student.major_id == Major.major_id) \
@@ -21,6 +21,7 @@ def student_view_all():
     return render_template('student_view_all.html', students=students)
 
 
+# View individual student and all attributes (adding birthdate, GPA, and number of credits completed)
 @app.route('/student/view/<int:student_id>')
 def student_view(student_id):
     student = Student.query.filter_by(student_id=student_id).first()
@@ -36,6 +37,7 @@ def student_view(student_id):
         return redirect(url_for('student_view_all'))
 
 
+# Create new student observation
 @app.route('/student/create', methods=['GET', 'POST'])
 def student_create():
     if request.method == 'GET':
@@ -62,6 +64,7 @@ def student_create():
     return redirect(url_for('student_view_all'))
 
 
+# Update student observation
 @app.route('/student/update/<int:student_id>', methods=['GET', 'POST'])
 def student_edit(student_id):
     if request.method == 'GET':
@@ -99,6 +102,7 @@ def student_edit(student_id):
     return redirect(url_for('student_view_all'))
 
 
+#Delete student observation
 @app.route('/student/delete/<int:student_id>')
 def student_delete(student_id):
     student = Student.query.filter_by(student_id=student_id).first()
