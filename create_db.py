@@ -1,6 +1,8 @@
 from app import app, db
-from models import Student, Major
+from models import Student, Major, User
+from werkzeug.security import generate_password_hash
 import datetime as dt
+
 
 with app.app_context():
     db.drop_all()
@@ -32,3 +34,21 @@ with app.app_context():
         db.session.commit()
 
 
+    # Initial loading of users
+    users = [
+        {'username': 'student', 'email': 'student@umd.edu', 'first_name':'Imma', 'last_name':'Student',
+            'password': generate_password_hash('studentpw', method='pbkdf2:sha256'), 'role':'STUDENT'},
+        {'username': 'manager', 'email': 'manager@umd.edu', 'first_name':'Joe', 'last_name':'King',
+            'password': generate_password_hash('managerpw', method='pbkdf2:sha256'), 'role':'MANAGER'},
+        {'username': 'admin', 'email': 'admin@umd.edu', 'first_name':'Crystal', 'last_name':'Ball',
+            'password': generate_password_hash('adminpw', method='pbkdf2:sha256'), 'role':'ADMIN'},
+        {'username': 'mfriddl1', 'email': 'mfriddl1@terpmail.umd.edu', 'first_name': 'Maura', 'last_name': 'Friddle',
+            'password': generate_password_hash('mfriddl1', method='pbkdf2:sha256'), 'role':'STUDENT'}
+    ]
+
+    for each_user in users:
+        print(f'{each_user["username"]} inserted into user')
+        a_user = User(username=each_user["username"], email=each_user["email"], first_name=each_user["first_name"],
+                      last_name=each_user["last_name"], password=each_user["password"], role=each_user["role"])
+        db.session.add(a_user)
+        db.session.commit()
